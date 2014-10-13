@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		29F8BAB419E85B7F00407BBE /* DataStructures */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataStructures; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F8BAB719E85B7F00407BBE /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		29F8BABE19E85FF700407BBE /* linked_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = linked_list.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				29F8BAB719E85B7F00407BBE /* main.c */,
+				29F8BABE19E85FF700407BBE /* linked_list.h */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
