@@ -8,8 +8,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "linked_list.h"
 #include "stack.h"
+#include "queue.h"
+
 
 int main(int argc, const char * argv[]) {
 
@@ -58,21 +61,29 @@ int main(int argc, const char * argv[]) {
 //    printf("%d\n", char_pointer);
 //    printf("%c\n", char_array[5]);
     //stack_push('a', &my_stack);
-    struct stack* my_stack = stack_create(50);
-    char counter = 32;
-    for (int j = 0; j < 100; j++) {
-        stack_push(counter, my_stack);
-        counter++;
-        //printf("%d,", my_stack->contents);
-        printf("%c, %d\t", my_stack->contents[j], j);
-    }
-    //stack_pop(my_stack);
-    printf("%c\n", stack_pop(my_stack));
-    printf("%c\n", stack_pop(my_stack));
-//    for (int k = 0; k < my_stack->capacity; k++) {
-//        printf("%c\t", my_stack->contents[k]);
+
+//    
+//    struct stack* my_stack = stack_create(50);
+//    char counter = 32;
+//    for (int j = 0; j < 100; j++) {
+//        stack_push(counter, my_stack);
+//        counter++;
+// 
+//        printf("%c, %d\t", my_stack->contents[j], j);
 //    }
-    printf("%c\n", stack_peek(my_stack));
-    printf("%d\n", stack_is_empty(my_stack));
+//
+//    printf("%c\n", stack_pop(my_stack));
+//    printf("%c\n", stack_pop(my_stack));
+//
+//    printf("%c\n", stack_peek(my_stack));
+//    printf("%d\n", stack_is_empty(my_stack));
+//    
+    
+    struct queue* my_queue = queue_create();
+    //strcpy(my_queue->contents[0], "Spencer");
+    queue_offer("Daniels", my_queue);
+    printf("%s\n", my_queue->contents[0]);
+    printf("%s\n", queue_poll(my_queue));
+    printf("%s\n", queue_poll(my_queue));
     return 0;
 }

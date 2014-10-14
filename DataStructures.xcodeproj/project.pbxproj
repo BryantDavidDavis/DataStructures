@@ -27,6 +27,7 @@
 		29F8BAB719E85B7F00407BBE /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		29F8BABE19E85FF700407BBE /* linked_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = linked_list.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
 		29F8BABF19EBA34F00407BBE /* stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		29F8BAC019ECA5BD00407BBE /* queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +44,7 @@
 		29F8BAAB19E85B7F00407BBE = {
 			isa = PBXGroup;
 			children = (
+				29F8BAC019ECA5BD00407BBE /* queue.h */,
 				29F8BAB619E85B7F00407BBE /* DataStructures */,
 				29F8BAB519E85B7F00407BBE /* Products */,
 			);
@@ -236,6 +238,7 @@
 				29F8BABD19E85B7F00407BBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
