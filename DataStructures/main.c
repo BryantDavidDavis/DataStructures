@@ -85,7 +85,7 @@ int main(int argc, const char * argv[]) {
     //printf("%s\n", my_queue->contents[0]);
     //printf("%s\n", queue_poll(my_queue));
     //printf("%s\n", queue_poll(my_queue));
-    char* last_names[] = {"Alito", "Breyer", "Ginsberg", "Kagan", "Kennedy", "Roberts", "Scalia", "Sotomayor", "Thomas"};
+    //char* last_names[] = {"Alito", "Breyer", "Ginsberg", "Kagan", "Kennedy", "Roberts", "Scalia", "Sotomayor", "Thomas"};
 //    for (int counter = 0; counter < 100; counter++) {
 //        
 //        queue_offer(last_names[counter % 9], my_queue);
@@ -94,6 +94,11 @@ int main(int argc, const char * argv[]) {
 //    while (my_queue->size) {
 //        printf("%s\t", queue_poll(my_queue));
 //    }
-    
+    //printf("found Justice %s\n", search_string_binary("Ginsberg", &last_names));
+    int my_array[100];
+    for (int i = 0; i < 100; i++) {
+        my_array[i] = i*2;
+    }
+    printf("found number: %d\n", search_array_binary(259, my_array, 0, 99));
     return 0;
 }
