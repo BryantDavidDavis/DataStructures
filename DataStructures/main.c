@@ -81,9 +81,19 @@ int main(int argc, const char * argv[]) {
     
     struct queue* my_queue = queue_create();
     //strcpy(my_queue->contents[0], "Spencer");
-    queue_offer("Daniels", my_queue);
-    printf("%s\n", my_queue->contents[0]);
-    printf("%s\n", queue_poll(my_queue));
-    printf("%s\n", queue_poll(my_queue));
+    //queue_offer("Daniels", my_queue);
+    //printf("%s\n", my_queue->contents[0]);
+    //printf("%s\n", queue_poll(my_queue));
+    //printf("%s\n", queue_poll(my_queue));
+    char* last_names[] = {"Alito", "Kennedy", "Roberts", "Ginsberg", "Thomas", "Scalia", "Breyer", "Sotomayor", "Kagan"};
+    for (int counter = 0; counter < 100; counter++) {
+        
+        queue_offer(last_names[counter % 9], my_queue);
+    }
+    printf("%s\n", queue_peek(my_queue));
+    while (my_queue->size) {
+        printf("%s\t", queue_poll(my_queue));
+    }
+    
     return 0;
 }

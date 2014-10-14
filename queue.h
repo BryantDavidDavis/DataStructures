@@ -15,7 +15,7 @@
 
 //circular array implementation of queue
 struct queue {
-    char contents[INITIAL_STACK_CAPACITY][INITIAL_STACK_STRING_CAPACITY];
+    char** contents;
     int front;
     int rear;
     int size;
@@ -25,11 +25,10 @@ struct queue {
 
 struct queue* queue_create() {
     struct queue* new_queue = malloc(sizeof(struct queue));
-//    char* outer_array[] = malloc(initial_capacity*sizeof(char*));
-//    for (int i = 0; i < initial_cpacity; i++) {
-//        outer_array[i] = malloc(25*sizeof(char));
-//    }
-//    new_queue->contents = outer_array;
+    new_queue->contents = malloc(INITIAL_STACK_CAPACITY*sizeof(char*));
+    for (int i = 0; i < INITIAL_STACK_CAPACITY; i++) {
+        new_queue->contents[i] = malloc(INITIAL_STACK_STRING_CAPACITY);
+    }
     new_queue->front = 0;
     new_queue->rear = INITIAL_STACK_CAPACITY - 1;
     new_queue->size = 0;
@@ -44,16 +43,23 @@ int queue_offer(char* to_insert, struct queue* my_queue) {
     if (my_queue->size == my_queue->capacity) {
         //now I need to allocate a new memory block with a multidimensional array of char pointers
         char** tempArray = malloc((my_queue->capacity*2)*sizeof(*tempArray));
-        for (int i = 0; i < (my_queue->capacity*2); i++) {
-            tempArray[i] = malloc(my_queue->string_length);
+        if (tempArray) {
+            for (int i = 0; i < (my_queue->capacity*2); i++) {
+                tempArray[i] = malloc(my_queue->string_length); //should probably make sure that there is still memory
+            }
+            //now copy the data
+            for (int j = 0; j < my_queue->size; j++) {
+                strcpy(tempArray[j], my_queue->contents[iterator]);
+                iterator = (iterator + 1) % my_queue->capacity;
+            }
+            //now free the old memory block and point the contents pointer to the new one
+            free(my_queue->contents);
+            my_queue->contents = NULL;
+            my_queue->contents = tempArray;
+            my_queue->capacity *= 2;
+        } else {
+            return 0; //because out of memory
         }
-        //now copy the data
-        for (int j = 0; j < my_queue->size; j++) {
-            strcpy(tempArray[j], my_queue->contents[iterator]);
-            iterator = (iterator + 1) % my_queue->capacity;
-        }
-        //now free the old memory block and point the contents pointer to the new one
-        //my_queue->contents = tempArray;
         
     }
     my_queue->rear = ((my_queue->rear) + 1) % my_queue->capacity;
@@ -73,6 +79,14 @@ char* queue_poll(struct queue* my_queue) {
         } else {
             return NULL;
         }
+    } else {
+        return NULL;
+    }
+}
+
+char* queue_peek(struct queue* my_queue) {
+    if (my_queue->size) {
+        return my_queue->contents[0];
     } else {
         return NULL;
     }
