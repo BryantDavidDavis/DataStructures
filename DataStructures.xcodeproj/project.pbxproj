@@ -23,6 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		29E4F05619EDBB4B004F2EAA /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+		29E4F05719EDBB4B004F2EAA /* search_sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = search_sort.h; sourceTree = "<group>"; };
 		29F8BAB419E85B7F00407BBE /* DataStructures */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataStructures; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F8BAB719E85B7F00407BBE /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		29F8BABE19E85FF700407BBE /* linked_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = linked_list.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
@@ -63,6 +65,8 @@
 			children = (
 				29F8BAC119EDB79800407BBE /* search_sort.h */,
 				29F8BAC019ECA5BD00407BBE /* queue.h */,
+				29E4F05619EDBB4B004F2EAA /* queue.h */,
+				29E4F05719EDBB4B004F2EAA /* search_sort.h */,
 				29F8BAB719E85B7F00407BBE /* main.c */,
 				29F8BABE19E85FF700407BBE /* linked_list.h */,
 				29F8BABF19EBA34F00407BBE /* stack.h */,

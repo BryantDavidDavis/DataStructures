@@ -11,10 +11,10 @@
 #ifndef DataStructures_search_sort_h
 #define DataStructures_search_sort_h
 
-char* search_string_binary(char* to_find, char* sorted_array) {
-    if (sorted_array) {
-        <#statements#>
-    }
-}
+//char* search_string_binary(char* to_find, char* sorted_array) {
+//    if (sorted_array) {
+//        <#statements#>
+//    }
+//}
 
 #endif
