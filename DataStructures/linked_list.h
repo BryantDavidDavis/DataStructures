@@ -5,7 +5,7 @@
 //  Created by Bryant Davis on 10/10/14.
 //  Copyright (c) 2014 Bryant Davis. All rights reserved.
 //
-
+#include <stdlib.h>
 #ifndef DataStructures_linked_list_h
 #define DataStructures_linked_list_h
 
@@ -127,6 +127,7 @@ int ll_remove(int item_value, struct ll_node** root) { //if we are deleting the 
     struct ll_node* previous_node = 0;
     if ((*root)->value == item_value) { //if the root is the value
         if ((*root)->next == NULL) { //if it is the only value in the list then just delete the reference to the list
+            free(*root);
             *root = NULL; //should probably free the pointer to avoid memory leak
             return 1;
         } else {
