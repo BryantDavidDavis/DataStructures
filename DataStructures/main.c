@@ -102,10 +102,16 @@ int main(int argc, const char * argv[]) {
 //    }
 //    printf("found number: %d\n", search_array_binary(259, my_array, 0, 99));
     
-    struct bt_node* node1 = bt_create_tree('b', bt_create_tree('a', NULL, NULL), bt_create_tree('c', NULL, NULL));
+    //struct bt_node* node1 = bt_create_tree('b', bt_create_tree('a', NULL, NULL), bt_create_tree('c', NULL, NULL));
     
-    
-    printf("%c\n", node1->right_child->data);
-    printf("%lu", bts_find('a', node1));
+    struct bt_node* root;
+    //bst_insert('l', &root);
+    //bst_insert('x', &root);
+    bst_build_tree("rudys barbeque", &root);
+    printf("%d\n", bst_contains('r', root));
+    //printf("%lu", bts_find('l', root));
+
+    //printf("%c\n", node1->right_child->data);
+    //printf("%lu", bts_find('a', node1));
     return 0;
 }
