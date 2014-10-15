@@ -32,7 +32,6 @@ int search_array_binary(int to_find, int* sorted_array, int first, int last) {
             } else {
                 return search_array_binary(to_find, sorted_array, first, middle - 1);
             }
-            
         }
     }
 }

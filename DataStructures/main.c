@@ -13,6 +13,7 @@
 #include "stack.h"
 #include "queue.h"
 #include "search_sort.h"
+#include "tree.h"
 
 int main(int argc, const char * argv[]) {
 
@@ -95,10 +96,16 @@ int main(int argc, const char * argv[]) {
 //        printf("%s\t", queue_poll(my_queue));
 //    }
     //printf("found Justice %s\n", search_string_binary("Ginsberg", &last_names));
-    int my_array[100];
-    for (int i = 0; i < 100; i++) {
-        my_array[i] = i*2;
-    }
-    printf("found number: %d\n", search_array_binary(259, my_array, 0, 99));
+//    int my_array[100];
+//    for (int i = 0; i < 100; i++) {
+//        my_array[i] = i*2;
+//    }
+//    printf("found number: %d\n", search_array_binary(259, my_array, 0, 99));
+    
+    struct bt_node* node1 = bt_create_tree('b', bt_create_tree('a', NULL, NULL), bt_create_tree('c', NULL, NULL));
+    
+    
+    printf("%c\n", node1->right_child->data);
+    printf("%lu", bts_find('a', node1));
     return 0;
 }
