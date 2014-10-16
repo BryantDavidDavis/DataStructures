@@ -107,9 +107,9 @@ int main(int argc, const char * argv[]) {
     struct bt_node* root;
     //bst_insert('l', &root);
     //bst_insert('x', &root);
-    bst_build_tree("rudys barbeque", &root);
+    bst_build_tree("from moscow to nakhotka it is better with vodka than without", &root);
     printf("%d\n", bst_contains('r', root));
-    printf("%c\n", bst_delete('r', &root));
+    printf("%c\n", bst_delete('x', &root));
     //printf("%lu", bts_find('l', root));
 
     //printf("%c\n", node1->right_child->data);
