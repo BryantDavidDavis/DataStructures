@@ -109,6 +109,7 @@ int main(int argc, const char * argv[]) {
     //bst_insert('x', &root);
     bst_build_tree("rudys barbeque", &root);
     printf("%d\n", bst_contains('r', root));
+    printf("%c\n", bst_delete('r', &root));
     //printf("%lu", bts_find('l', root));
 
     //printf("%c\n", node1->right_child->data);

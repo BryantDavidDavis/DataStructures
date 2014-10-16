@@ -103,13 +103,19 @@ char bst_delete(char to_delete, struct bt_node** root) {
             *root = (*root)->left_child;
             return deleted_char;
         } else { //there are two nodes so we need to find the inorder predecessor which is the rightmost node of the left subtree of the item to be romoved
-//            struct bt_node* inorder_predecessor = (*root)->leftchild; //begin to find the inorder predecessor selecting the left child
-//            while (inorder_predecessor->right_child != NULL) {
-//                inorder_predecessor = inorder_predecessor->right_child;
-//            } //after the loop, the inorder predecessor should be chosen by now
-//            deleted_char = inorder_predecessor->data;
-            //probably can use the find method here
-            struct bt_node* inorder_predecessor = 
+            
+            struct bt_node* my_deletable = *root; //make a copy of the pointer to the left child
+            deleted_char = (*root)->data;
+            *root = (*root)->left_child;
+            while ((*root)->right_child != NULL) {
+                *root= (*root)->right_child;
+            } //find the last right_child
+            my_deletable->data = (*root)->data;
+            free(*root);
+            (*root) = NULL;
+            //my_deletable->data = deleted_char;
+            return deleted_char;
+            
         }
     }
 }
