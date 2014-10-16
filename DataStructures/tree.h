@@ -82,8 +82,35 @@ int bst_contains(char data, struct bt_node* root) {
 }
 
 char bst_delete(char to_delete, struct bt_node** root) {
-    if (bst_find(to_delete, *root) == NULL) {
+    char deleted_char = '\0';
+    if (*root == NULL) {
         return '\0';
+    } else if ((*root)->data > to_delete) {
+        return bst_delete(to_delete, &((*root)->left_child));
+    } else if ((*root)->data < to_delete) {
+        return bst_delete(to_delete, &((*root)->right_child));
+    } else { //we have found the node to delete
+        if (((*root)->left_child == NULL) && ((*root)->right_child) == NULL) {
+            deleted_char = (*root)->data;
+            *root = NULL;
+            return deleted_char;
+        } else if ((*root)->left_child == NULL) { //in this case there is a right child so just set it to the parent
+            deleted_char = (*root)->data;
+            *root = (*root)->right_child;
+            return deleted_char;
+        } else if ((*root)->right_child == NULL){
+            deleted_char = (*root)->data;
+            *root = (*root)->left_child;
+            return deleted_char;
+        } else { //there are two nodes so we need to find the inorder predecessor which is the rightmost node of the left subtree of the item to be romoved
+//            struct bt_node* inorder_predecessor = (*root)->leftchild; //begin to find the inorder predecessor selecting the left child
+//            while (inorder_predecessor->right_child != NULL) {
+//                inorder_predecessor = inorder_predecessor->right_child;
+//            } //after the loop, the inorder predecessor should be chosen by now
+//            deleted_char = inorder_predecessor->data;
+            //probably can use the find method here
+            struct bt_node* inorder_predecessor = 
+        }
     }
 }
 
