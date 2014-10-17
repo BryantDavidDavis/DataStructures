@@ -113,12 +113,11 @@ char bst_delete(char to_delete, struct bt_node** root) {
             struct bt_node* temp = bst_find_largest_descendant((*root)->left_child);
             deleted_char = (*root)->data;
             (*root)->data = temp->data;
-            bst_delete(temp->data, &((*root)->left_child)); //for somereason we are setting this to the value of the delete, so lets try to just remove the left side
+            bst_delete(temp->data, &((*root)->left_child));
             return deleted_char;
         }
     }
-}  //we should be able to allocate a new element to take the place of the inorder predecessor
-// a similar approach was used in the insert after linked_list situation.  We allocate a node pointer that stores the address of the root pointer, then we advance it to the inorder predecessor.  then we set the root to the copy of the inorder predecessor
+}
 
 void bt_traverse_preorder(struct bt_node* my_tree) { //prints out the characters using preorder traversal
     if (my_tree == NULL) {
