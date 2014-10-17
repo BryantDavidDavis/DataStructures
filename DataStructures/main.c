@@ -105,13 +105,25 @@ int main(int argc, const char * argv[]) {
     //struct bt_node* node1 = bt_create_tree('b', bt_create_tree('a', NULL, NULL), bt_create_tree('c', NULL, NULL));
     
     struct bt_node* root;
+    struct queue* my_queue;
     //bst_insert('l', &root);
     //bst_insert('x', &root);
     bst_build_tree("from moscow to nakhotka it is better with vodka than without", &root);
-    printf("%d\n", bst_contains('r', root));
-    printf("%c\n", bst_delete('x', &root));
+    //printf("%d\n", bst_contains('r', root));
+    //bst_insert('l', &root);
+    //bst_insert('p', &root);
+    //bst_delete('f', &root);
+    bst_delete('f', &root);
+    bst_delete('c', &root);
+    //bst_delete('k', &root);
+    //bst_delete('s', &root);
+    bst_insert('q', &root);
+    bst_insert('f', &root);
+    //bt_traverse_preorder(root);
+    bt_traverse_inorder(root);
+    //printf("%c\n", bst_delete('x', &root));
     //printf("%lu", bts_find('l', root));
-
+    
     //printf("%c\n", node1->right_child->data);
     //printf("%lu", bts_find('a', node1));
     return 0;

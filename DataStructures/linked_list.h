@@ -71,7 +71,7 @@ struct ll_node* ll_get(int value, struct ll_node* root) {
 /**
  * returns a pointer to the element before the first occurance of an element with a certain value
  * @'value' is the value we are looking for
- * @root is the ointer to the root node
+ * @root is the pointer to the root node
  */
 struct ll_node* ll_get_previous(int value, struct ll_node* root) {
     struct ll_node* current_node = root;
