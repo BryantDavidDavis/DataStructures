@@ -14,6 +14,7 @@
 #include "queue.h"
 #include "search_sort.h"
 #include "tree.h"
+#include "heap.h"
 
 int main(int argc, const char * argv[]) {
 
@@ -104,27 +105,66 @@ int main(int argc, const char * argv[]) {
     
     //struct bt_node* node1 = bt_create_tree('b', bt_create_tree('a', NULL, NULL), bt_create_tree('c', NULL, NULL));
     
-    struct bt_node* root;
-    struct queue* my_queue;
+    //struct bt_node* root;
+    //struct queue* my_queue;
     //bst_insert('l', &root);
     //bst_insert('x', &root);
-    bst_build_tree("from moscow to nakhotka it is better with vodka than without", &root);
+    //bst_build_tree("from moscow to nakhotka it is better with vodka than without", &root);
     //printf("%d\n", bst_contains('r', root));
     //bst_insert('l', &root);
     //bst_insert('p', &root);
     //bst_delete('f', &root);
-    bst_delete('f', &root);
-    bst_delete('c', &root);
+    //bst_delete('f', &root);
+    //bst_delete('c', &root);
     //bst_delete('k', &root);
     //bst_delete('s', &root);
-    bst_insert('q', &root);
-    bst_insert('f', &root);
+    //bst_insert('q', &root);
+    //bst_insert('f', &root);
     //bt_traverse_preorder(root);
-    bt_traverse_inorder(root);
+    //bt_traverse_inorder(root);
     //printf("%c\n", bst_delete('x', &root));
     //printf("%lu", bts_find('l', root));
-    
+    //bt_traverse_postorder(root);
     //printf("%c\n", node1->right_child->data);
     //printf("%lu", bts_find('a', node1));
+    struct heap_item* a= heap_item_create(406, "A Tale of Two Cities");
+    struct heap_item* b = heap_item_create(889, "War and Peace");
+    struct heap_item* c = heap_item_create(123, "Old Man and the Sea");
+    struct heap_item* d = heap_item_create(234, "The Great Gatsby");
+    struct heap_item* e = heap_item_create(345, "To Kill a Mockingbird");
+    struct heap_item* f = heap_item_create(555, "The Firm");
+    struct heap_item* g = heap_item_create(20, "M is for Murder");
+    struct heap_item* h = heap_item_create(477, "The Hunger Games");
+    struct heap_item* i = heap_item_create(621, "Crime and Punishment");
+    struct heap_item* j = heap_item_create(110, "The Metamorphosis");
+    struct heap_item* k = heap_item_create(713, "Madame Bovary");
+    struct heap_item* l = heap_item_create(5, "A Catcher in the Rye");
+    struct heap_item* m = heap_item_create(1007, "The Oddysey");
+    struct heap_item* n = heap_item_create(101, "The Idiot");
+
+    struct heap* my_heap = heap_create(a);
+    heap_insert(b, &my_heap);
+    heap_insert(c, &my_heap);
+    heap_insert(d, &my_heap);
+    heap_insert(e, &my_heap);
+    heap_insert(f, &my_heap);
+    heap_insert(g, &my_heap);
+    heap_insert(h, &my_heap);
+    heap_insert(i, &my_heap);
+    heap_insert(j, &my_heap);
+    heap_insert(k, &my_heap);
+    heap_insert(l, &my_heap);
+    heap_insert(m, &my_heap);
+    heap_insert(n, &my_heap);
+    //ok, so amortized doubling works, and insertion works
+    //printf("%s\n", my_heap->item[0].string);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+
     return 0;
 }

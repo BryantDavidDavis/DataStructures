@@ -123,7 +123,6 @@ void bt_traverse_preorder(struct bt_node* my_tree) { //prints out the characters
     if (my_tree == NULL) {
         return ;
     } else {
-        //queue_offer(&(my_tree->data), *my_queue);
         printf("%c\t", my_tree->data);
         bt_traverse_preorder(my_tree->left_child);
         bt_traverse_preorder(my_tree->right_child);
@@ -137,6 +136,16 @@ void bt_traverse_inorder(struct bt_node* my_tree) { //prints out the characters 
         bt_traverse_inorder(my_tree->left_child);
         printf("%c\t", my_tree->data);
         bt_traverse_inorder(my_tree->right_child);
+    }
+}
+
+void bt_traverse_postorder(struct bt_node* my_tree) { //prints out the characters using inorder traversal
+    if (my_tree == NULL) {
+        return;
+    } else {
+        bt_traverse_postorder(my_tree->left_child);
+        bt_traverse_postorder(my_tree->right_child);
+        printf("%c\t", my_tree->data);
     }
 }
 
