@@ -127,7 +127,7 @@ int main(int argc, const char * argv[]) {
     //bt_traverse_postorder(root);
     //printf("%c\n", node1->right_child->data);
     //printf("%lu", bts_find('a', node1));
-    struct heap_item* a= heap_item_create(406, "A Tale of Two Cities");
+    struct heap_item* a = heap_item_create(406, "A Tale of Two Cities");
     struct heap_item* b = heap_item_create(889, "War and Peace");
     struct heap_item* c = heap_item_create(123, "Old Man and the Sea");
     struct heap_item* d = heap_item_create(234, "The Great Gatsby");
