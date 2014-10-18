@@ -92,25 +92,35 @@ int heap_insert(struct heap_item* item, struct heap** my_heap) {
     return 1;
 }
 
-struct heap_item heap_remove(struct heap** my_heap) {
-    struct heap_item item_to_remove = (*my_heap)->item[0];
-    
+struct heap_item* heap_remove(struct heap** my_heap) {
+    struct heap_item* item_to_remove = &(*my_heap)->item[0];
+    if(!(*my_heap)->size) {
+        return NULL;
+    }
     (*my_heap)->item[0] = (*my_heap)->item[(*my_heap)->size - 1];
     (*my_heap)->size--;
+    //should we delete the heap here? or leave that for a different function? I suppose we should deallocate the memory each time an item is removed from the heap
+    if (!(*my_heap)->size) {
+        free((*my_heap)->item);
+        (*my_heap)->item = NULL;
+    }
     int i = 0;
     struct heap_item temp_item;
-    //while the value is greater than one or both of its children swap it with the smaller of the two
-    while(((*my_heap)->item[i].value > (*my_heap)->item[(i+1)*2].value)||(*my_heap)->item[i].value > (*my_heap)->item[(i+1)*2 - 1].value) {
+    //while there are children, and the value is greater than one or both of its children, swap it with the smaller of the two
+    while(((i+1)*2 <= (*my_heap)->size)&&(((*my_heap)->item[i].value > (*my_heap)->item[(i+1)*2].value)||((*my_heap)->item[i].value > (*my_heap)->item[(i+1)*2 - 1].value))) {
+        
         if((*my_heap)->item[(i+1)*2].value < (*my_heap)->item[(i+1)*2 - 1].value) {
             temp_item = (*my_heap)->item[(i+1)*2];
             (*my_heap)->item[(i+1)*2] = (*my_heap)->item[i];
             (*my_heap)->item[i] = temp_item;
+            i = (i + 1)*2;
         } else {
             temp_item = (*my_heap)->item[(i+1)*2 - 1];
             (*my_heap)->item[(i+1)*2 - 1] = (*my_heap)->item[i];
             (*my_heap)->item[i] = temp_item;
+            i = (i + 1)*2 - 1;
         }
-    }
+    } //I think I am stopping the loop too soon, and the item needs to continue propogation down, currently it is just going one spot down and stopping
     
     return item_to_remove;
 }

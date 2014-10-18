@@ -165,6 +165,28 @@ int main(int argc, const char * argv[]) {
     printf("%s\n", my_heap->item[0].string);
     heap_remove(&my_heap);
     printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+    printf("%s\n", my_heap->item[0].string);
+    heap_remove(&my_heap);
+
 
     return 0;
 }
