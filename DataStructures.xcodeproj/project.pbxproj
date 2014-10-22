@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		29D9440119F75AAF000C68BC /* hash_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hash_map.h; sourceTree = "<group>"; };
 		29E4F05619EDBB4B004F2EAA /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		29E4F05719EDBB4B004F2EAA /* search_sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = search_sort.h; sourceTree = "<group>"; };
 		29E4F05819EDEC99004F2EAA /* tree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tree.h; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 				29E4F05819EDEC99004F2EAA /* tree.h */,
 				29E4F05919F1DBA5004F2EAA /* array_list.h */,
 				29E4F05A19F1DD31004F2EAA /* heap.h */,
+				29D9440119F75AAF000C68BC /* hash_map.h */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
