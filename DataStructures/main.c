@@ -189,9 +189,19 @@ int main(int argc, const char * argv[]) {
 //    heap_remove(&my_heap);
 
     struct hash_map* my_map = hm_build_map();
-    hm_put("bonanza", &my_map);
+    //printf("%d\n", hm_put("bonanza", &my_map));
     hm_put("law and order", &my_map);
-    hm_put("batman", &my_map);
+    hm_put("Batman", &my_map);
     hm_put("CSI Miami", &my_map);
+    hm_put("Snoopy", &my_map);
+    hm_put("The Flash", &my_map);
+    //printf("%d\n", hm_put("The Good Wife", &my_map));
+    //hm_print(my_map);
+    //printf("%s", my_map->table->value);
+    hm_get("law and order", my_map);
+    hm_get("CSI Miami", my_map);
+    hm_get("The Flash", my_map);
+    hm_get("Batman", my_map);
+    hm_get("Pinwheel", my_map);
     return 0;
 }

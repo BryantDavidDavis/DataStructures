@@ -10,6 +10,7 @@
 #define DataStructures_hash_map_h
 
 #define INITIAL_HASHMAP_CAPACITY 5
+#define INITIAL_TABLE_STRING_LENGTH 40
 #include <string.h>
 
 //this table will be an array whose indexes each store a pointer to the first node of a doubley-linked list, whose data is a string.
@@ -22,7 +23,6 @@ struct hash_map {
 
 struct ll_string_node {
     char* value;
-    struct ll_string_node* prev; //if prev is null then it is the root of the list
     struct ll_string_node* next;
 };
 
@@ -32,12 +32,11 @@ struct ll_string_node {
 //get, put(key, value), remove, size, and isempty, also resize?
 
 struct hash_map* hm_build_map() {
-    struct hash_map* my_map = malloc(sizeof(struct hash_map));
-    struct ll_string_node** my_table = malloc(sizeof(struct ll_string_node)*INITIAL_HASHMAP_CAPACITY);
-    my_map->table = my_table; //do I need to initialize the value of each pointer in the table array to be null?
-    my_map->size = 0;
-    my_map->capacity = INITIAL_HASHMAP_CAPACITY;
-    return my_map;
+    struct hash_map* new_map = malloc(sizeof(struct hash_map));
+    new_map->table = malloc(sizeof(struct ll_string_node)*INITIAL_HASHMAP_CAPACITY);
+    new_map->size = 0;
+    new_map->capacity = INITIAL_HASHMAP_CAPACITY;
+    return new_map;
 }
 
 int hm_hash_me(char* value, int capacity) {
@@ -49,44 +48,62 @@ int hm_hash_me(char* value, int capacity) {
 }
 
 int hm_put(char* value, struct hash_map** my_map) {
-    struct ll_string_node* my_node = malloc(sizeof(struct ll_string_node));
-    struct ll_string_node* root = malloc(sizeof(struct ll_string_node));
-    int hash_code = hm_hash_me(value, (*my_map)->capacity);
-    my_node->value = value; //now we have a new node allocated with the given string
-    //now we go to the proper index using the hashcode and insert my_node at the beginning of the list that is where the root is
-    root = (*my_map)->table[hash_code];
-    my_node->next = root;
-    root = my_node;
-    my_node->prev = root;
-    
-    
-    //    my_node->value = value;
-//    my_node->prev = NULL;
-//    my_node->next = NULL;
-//    int hash_code = hm_hash_me(value, (*my_map)->capacity);
-//    //now we should insert at the beginning of the list, since it's easiet
-//    first = NULL;
-//    my_node->next = first;
-//    first = my_node;
-//    if ((*my_map)->table[hash_code] == NULL) { //if there is nothing in the index yet, then put this list node there
-//       (*my_map)->table[hash_code] = my_node;
-//       printf("%s\n", (*my_map)->table[hash_code]->value);
-//    } else {
-////        my_node = (*my_map)->table[hash_code];
-////        //my_node->prev = (*my_map)->table[hash_code]->prev;
-////        my_node->next = (*my_map)->table[hash_code]->next;
-////        while (my_node->next != NULL) {
-////            my_node->prev = my_node; //can I do this? or do I need yet another temp?  I'll try this first
-////            temp = my_node->next->next;
-////            my_node = my_node->next; //now current has been set to the last element in the array
-////            my_node->next = temp;
-////            printf("%s\n", my_node->value);
-////        }
-//        //my_node->prev = current->prev;
-//        //my_node->next = current->next; //now the new node should be set to the last node
-//        //printf("%s\n", my_node->value);
-////    }
-    return 1;
+    struct ll_string_node* new_node = malloc(sizeof(struct ll_string_node));
+    int hashcode = 0;
+    if (new_node) {
+        new_node->value = malloc(sizeof(char)*INITIAL_TABLE_STRING_LENGTH); //new_node->value is also an address
+        if (new_node->value) {
+            new_node->next = NULL;
+            strcpy(new_node->value, value); //value is now stored in new_node->value
+            hashcode = hm_hash_me(value, (*my_map)->capacity);
+            if ((*my_map)->table[hashcode] == NULL) {
+                (*my_map)->table[hashcode] = new_node;
+            } else {
+                new_node->next = (*my_map)->table[hashcode];
+                (*my_map)->table[hashcode] = new_node;
+            }
+            (*my_map)->size++;
+            return 1;
+        } else {
+            return 0;
+        }
+
+    } else {
+        return 0;
+    }
+
 }
+
+//currently we have the problem that the program crashes if it tries to find a string that is not in the table
+struct ll_string_node* hm_get(char* value, struct hash_map* my_map) {
+    int hashcode = hm_hash_me(value, my_map->capacity);
+    struct ll_string_node* current = malloc(sizeof(struct ll_string_node));
+    current->value = malloc(sizeof(char)*INITIAL_TABLE_STRING_LENGTH); //do I need to initialize this, actually I don't think I need to
+    if (current) {
+        current = my_map->table[hashcode];
+        while ((strcmp(current->value, value) != 0)&&(current != NULL)) { //I think the problem is that we are calling string compare on a value that doens't exist, but current->next should be null for the last one, so why does it still have an address?
+            printf("%s\t", current->value);
+            current = current->next;
+        }
+        printf("%s\n", current->value);
+    }
+    return current;
+    
+}
+
+
+
+//void hm_print(struct hash_map* my_map) {
+//    char temp = 0;
+//    temp = (my_map->table[0]->value);
+//    printf("%c", temp);
+//    //    for (int i = 0; i < my_map->capacity; i++) {
+////        while (my_map->table[i] != NULL) {
+////            printf("%s\t", my_map->table[i]->value);
+////            my_map->table[i] = my_map->table[i]->next;
+////        }
+////        printf("\n");
+////    }
+//}
 
 #endif
