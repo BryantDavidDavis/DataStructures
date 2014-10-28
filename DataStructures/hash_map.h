@@ -31,7 +31,7 @@ void hm_rehash(struct hash_map** old_map);
 //need a method to initiate an empty map -- check
 //need a method to start a new linked_list --not necessary
 //need a method to contstuct a new node, then hashcode the element, and then insert it into the map or into the linked list reference by the map index -- check
-//get, put(key, value), remove, size, and isempty, also resize/reshash?
+//get, put(key, value), remove, size, and isempty, also resize/reshash? -- check
 
 struct hash_map* hm_build_map() {
     struct hash_map* new_map = malloc(sizeof(struct hash_map));

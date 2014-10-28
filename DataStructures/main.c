@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "linked_list.h"
 #include "stack.h"
 #include "queue.h"
@@ -19,6 +20,25 @@
 
 int main(int argc, const char * argv[]) {
 
+    int test_array[50];
+    
+    for (int i = 0; i < 50; i++) {
+        test_array[i] = rand() % 50;
+    }
+    
+    for (int i = 0; i < 50; i++) {
+        printf("%d\t", test_array[i]);
+    }
+    
+    printf("\n");
+    
+    //select_sort(test_array);
+    //bubble_sort(test_array);
+    insert_sort(test_array);
+    for (int i = 0; i < 50; i++) {
+        printf("%d\t", test_array[i]);
+    }
+    
 //    struct ll_node* root = create_linked_list(7);
 //    
 //    ll_append(9, &root);
@@ -188,19 +208,19 @@ int main(int argc, const char * argv[]) {
 //    printf("%s\n", my_heap->item[0].string);
 //    heap_remove(&my_heap);
 
-    struct hash_map* my_map = hm_build_map();
-    //printf("%d\n", hm_put("bonanza", &my_map));
-    hm_put("law and order", &my_map); //hashcode of 1
-    hm_put("Batman", &my_map); //
-    hm_put("CSI Miami", &my_map);
-    printf("%d\n", hm_put("Snoopy", &my_map));
-    hm_put("The Flash", &my_map);
-    //printf("%d\n", hm_put("The Good Wife", &my_map));
-    //hm_print(my_map);
-    //printf("%s", my_map->table->value);
-    hm_put("Night Rider", &my_map); //hashcode of 1
-    hm_put("Fargo", &my_map); //
-    hm_put("True Blood", &my_map);
+//    struct hash_map* my_map = hm_build_map();
+//    //printf("%d\n", hm_put("bonanza", &my_map));
+//    hm_put("law and order", &my_map); //hashcode of 1
+//    hm_put("Batman", &my_map); //
+//    hm_put("CSI Miami", &my_map);
+//    printf("%d\n", hm_put("Snoopy", &my_map));
+//    hm_put("The Flash", &my_map);
+//    //printf("%d\n", hm_put("The Good Wife", &my_map));
+//    //hm_print(my_map);
+//    //printf("%s", my_map->table->value);
+//    hm_put("Night Rider", &my_map); //hashcode of 1
+//    hm_put("Fargo", &my_map); //
+//    hm_put("True Blood", &my_map);
    
     //hm_get("Snoopy", my_map);
     //hm_get("Pinwheel", my_map);
@@ -220,9 +240,9 @@ int main(int argc, const char * argv[]) {
 //    hm_get("let's make a deal", my_map);
     //hm_get("CSI Miami", my_map);
     //hm_get("Night Rider", my_map);
-    hm_get("Snoopy", my_map);
-    hm_remove("CSI Miami", &my_map);
-    hm_get("Snoopy", my_map);
+//    hm_get("Snoopy", my_map);
+//    hm_remove("CSI Miami", &my_map);
+//    hm_get("Snoopy", my_map);
     //hm_get("The Good Wife", my_map); //hashcode of 3, doesn't work
     //hm_remove("CSI Miami", &my_map);
     //hm_get("CSI Miami", my_map);
@@ -230,5 +250,6 @@ int main(int argc, const char * argv[]) {
     //hm_get("Days of Our Lives", my_map); //hashcode of 2, Doesn't Work
     //hm_get("Pinwheel", my_map); //hashcode of 3 doesn't work
     //hm_get("Family Ties", my_map); //hashcode of 2 doen'st work
+
     return 0;
 }
