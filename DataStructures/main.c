@@ -198,24 +198,34 @@ int main(int argc, const char * argv[]) {
     //printf("%d\n", hm_put("The Good Wife", &my_map));
     //hm_print(my_map);
     //printf("%s", my_map->table->value);
-    hm_get("Snoopy", my_map);
-    hm_get("Pinwheel", my_map);
-    hm_get("Snoopy", my_map);
-    hm_get("law and order", my_map);
-    hm_get("Snoopy", my_map);
-    hm_get("CSI Miami", my_map);
+    hm_put("Night Rider", &my_map); //hashcode of 1
+    hm_put("Fargo", &my_map); //
+    hm_put("True Blood", &my_map);
+   
+    //hm_get("Snoopy", my_map);
+    //hm_get("Pinwheel", my_map);
+    //hm_get("Snoopy", my_map);
+    //hm_get("law and order", my_map);
+    //hm_get("Snoopy", my_map);
+    //hm_get("CSI Miami", my_map);
     //hm_get("The Flash", my_map);
     //hm_get("Batman", my_map);
+//    hm_get("Snoopy", my_map);
+//    hm_get("Night Rider", my_map); //hashcode of 0, works
+//    hm_get("Little House", my_map); //hashcode of 0, works
+//    hm_get("The Flash", my_map); //by the time we get here there is a null pointer where the flash should be
+//    hm_get("little house", my_map); //hashcode of 4, give the correct answer but for some reason the table pointer is null here
+//    hm_get("pinwheel", my_map); //hashcode of 0, works
+//    hm_get("wheel of fortune", my_map); //hashcode of 1, works
+//    hm_get("let's make a deal", my_map);
+    //hm_get("CSI Miami", my_map);
+    //hm_get("Night Rider", my_map);
     hm_get("Snoopy", my_map);
-    hm_get("Night Rider", my_map); //hashcode of 0, works
-    hm_get("Little House", my_map); //hashcode of 0, works
-    hm_get("The Flash", my_map); //by the time we get here there is a null pointer where the flash should be
-    hm_get("little house", my_map); //hashcode of 4, give the correct answer but for some reason the table pointer is null here
-    hm_get("pinwheel", my_map); //hashcode of 0, works
-    hm_get("wheel of fortune", my_map); //hashcode of 1, works
-    hm_get("let's make a deal", my_map);
-    hm_get("CSI Miami", my_map);    
-    hm_get("The Good Wife", my_map); //hashcode of 3, doesn't work
+    hm_remove("CSI Miami", &my_map);
+    hm_get("Snoopy", my_map);
+    //hm_get("The Good Wife", my_map); //hashcode of 3, doesn't work
+    //hm_remove("CSI Miami", &my_map);
+    //hm_get("CSI Miami", my_map);
     //hm_get("The Cosby Show", my_map); //hashcode of 2, deosn't work
     //hm_get("Days of Our Lives", my_map); //hashcode of 2, Doesn't Work
     //hm_get("Pinwheel", my_map); //hashcode of 3 doesn't work
