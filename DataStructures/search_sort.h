@@ -11,14 +11,6 @@
 #ifndef DataStructures_search_sort_h
 #define DataStructures_search_sort_h
 
-//char* search_string_binary(char* to_find, char** sorted_array) {
-//    if (sorted_array) {
-//        
-//    } else {
-//        return NULL;
-//    }
-//}
-
 int search_array_binary(int to_find, int* sorted_array, int first, int last) {
     if (first > last) {
         return -1; //number not found
@@ -99,8 +91,62 @@ void insert_sort(int* to_sort) {
     }
 }
 
+//void shell_sort(int* to_sort) {
+//    int next_pos = 0;
+//    int length = 50;
+//    int gap_val = length/2;
+//    int temp = 0;
+//    
+//    while (gap_val > 0) {
+//        for (int end_pos = gap_val; end_pos < length; end_pos++) { //this condition is wrong
+//            next_pos = end_pos;
+//            temp = to_sort[next_pos];
+//            int i = end_pos;
+//            while (to_sort[i] < temp) {
+//                i = i + gap_val;
+//            }
+//            for (int j = next_pos; j > i; j = j - gap_val) {
+//                to_sort[j] = to_sort[j - gap_val];
+//            }
+//            to_sort[i] = temp;
+//        }
+//        if (gap_val == 2) {
+//            gap_val = 1;
+//        } else {
+//            gap_val = gap_val/2.2;
+//        }
+//    }
+//}
+
 void shell_sort(int* to_sort) {
-    
+    int length = 50;
+    int gap_val = length/2;
+    while (gap_val > 0) {
+        for (int iterator = gap_val; iterator < length; iterator++) {
+            
+            int temp = 0;
+            for (int next_pos = iterator; next_pos < length; next_pos = next_pos + gap_val) {
+                int sub_iterator = next_pos - gap_val;
+                temp = to_sort[next_pos];
+                int sub_value = to_sort[sub_iterator]; //this will always equal the value at temp because sub_iterator is being set to it
+                while ((temp < to_sort[sub_iterator])&&((sub_iterator - gap_val) >= 0)) { //this condition is wrong, for next pos is 31, sub iterator should go to 6 becase 6 is smaller
+                    sub_iterator = sub_iterator - gap_val;
+                    sub_value = to_sort[sub_iterator];
+                }
+                if (to_sort[sub_iterator] > temp) {
+                    for (int j = next_pos; j >= sub_iterator; j = j - gap_val) {
+                        to_sort[j] = to_sort[j - gap_val];
+                    }
+                    to_sort[sub_iterator] = temp;
+                }
+            }
+        }
+        if (gap_val == 2) {
+            gap_val = 1;
+        } else {
+            gap_val = gap_val/2.2;
+        }
+    }
 }
 
 #endif

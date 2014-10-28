@@ -34,7 +34,8 @@ int main(int argc, const char * argv[]) {
     
     //select_sort(test_array);
     //bubble_sort(test_array);
-    insert_sort(test_array);
+    //insert_sort(test_array);
+    shell_sort(test_array);
     for (int i = 0; i < 50; i++) {
         printf("%d\t", test_array[i]);
     }
