@@ -133,7 +133,7 @@ void shell_sort(int* to_sort) {
                     sub_iterator = sub_iterator - gap_val;
                     sub_value = to_sort[sub_iterator];
                 }
-                if (to_sort[sub_iterator] > temp) {
+                if (to_sort[sub_iterator] > temp) { //now check this condition, I think that it may be wrong, do I need this condition? actually I think it is ok
                     for (int j = next_pos; j >= sub_iterator; j = j - gap_val) {
                         to_sort[j] = to_sort[j - gap_val];
                     }
@@ -146,6 +146,54 @@ void shell_sort(int* to_sort) {
         } else {
             gap_val = gap_val/2.2;
         }
+    }
+}
+
+void merge_sort(int* to_sort, int length) {
+    int left_length = length/2;
+    int right_length = length - left_length;
+    int array_left[left_length];
+    int array_right[right_length];
+    int i = 0, j = 0, k = 0;
+    
+    if (length > 1) {
+        
+        for (int i = 0; i < left_length; i++) {
+            array_left[i] = to_sort[i];
+        }
+        
+        for (int i = 0; i < right_length; i++) {
+            array_right[i] = to_sort[i + left_length];
+        }
+        
+        merge_sort(array_left, left_length);
+        merge_sort(array_right, right_length);
+    }
+    
+    while ((i < left_length) && (j < right_length)) {
+        if (array_left[i] < array_right[j]) {
+            to_sort[k] = array_left[i];
+            i++;
+        } else {
+            to_sort[k] = array_right[j];
+            j++;
+        }
+        k++;
+    }
+    if (i > j) {
+        while (j < right_length) {
+            to_sort[k] = array_right[j];
+            j++;
+            k++;
+        }
+    } else if (j > i) {
+        while (i < left_length) {
+            to_sort[k] = array_left[i];
+            i++;
+            k++;
+        }
+    } else if(j) { //i == j, so we have two situations, either there is a one element right array, or there is a right and left array that still has one more element in the right array, so if j is still zero it means that there was only a one element right array, as there has been no iterations, and so we do nothing, otherwise we put the last element into the to_sort array.
+        to_sort[k] = array_right[j]; //this adds the last element from the right array
     }
 }
 

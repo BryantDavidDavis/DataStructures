@@ -29,13 +29,16 @@ int main(int argc, const char * argv[]) {
     for (int i = 0; i < 50; i++) {
         printf("%d\t", test_array[i]);
     }
+    //printf("%d", test_array[49]);
     
+    printf("\n");
     printf("\n");
     
     //select_sort(test_array);
     //bubble_sort(test_array);
     //insert_sort(test_array);
-    shell_sort(test_array);
+    //shell_sort(test_array);
+    merge_sort(test_array, 50);
     for (int i = 0; i < 50; i++) {
         printf("%d\t", test_array[i]);
     }
