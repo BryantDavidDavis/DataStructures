@@ -38,7 +38,8 @@ int main(int argc, const char * argv[]) {
     //bubble_sort(test_array);
     //insert_sort(test_array);
     //shell_sort(test_array);
-    merge_sort(test_array, 50);
+    //merge_sort(test_array, 50);
+    heap_sort(test_array, 50);
     for (int i = 0; i < 50; i++) {
         printf("%d\t", test_array[i]);
     }

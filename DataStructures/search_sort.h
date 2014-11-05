@@ -180,6 +180,7 @@ void merge_sort(int* to_sort, int length) {
         }
         k++;
     }
+    
     if (i > j) {
         while (j < right_length) {
             to_sort[k] = array_right[j];
@@ -194,6 +195,31 @@ void merge_sort(int* to_sort, int length) {
         }
     } else if(j) { //i == j, so we have two situations, either there is a one element right array, or there is a right and left array that still has one more element in the right array, so if j is still zero it means that there was only a one element right array, as there has been no iterations, and so we do nothing, otherwise we put the last element into the to_sort array.
         to_sort[k] = array_right[j]; //this adds the last element from the right array
+    }
+}
+
+void heap_restore_big(int* my_array, int len) {
+    for (int i = len - 1; i > 0; i --) {
+        int child = i;
+        int parent = (i - 1) / 2;
+        int temp = 0;
+        while ((my_array[child] > my_array[parent])&&(child != 0)) {
+            temp = my_array[parent];
+            my_array[parent] = my_array[child];
+            my_array[child] = temp;
+            child = parent;
+            parent = (parent - 1) / 2;
+        }
+    }
+}
+void heap_sort(int* to_sort, int length) {
+    heap_restore_big(to_sort, length);
+    
+    for (int temp_length = length, to_swap = 0; temp_length > 2; temp_length--) {
+        to_swap = to_sort[0];
+        to_sort[0] = to_sort[temp_length - 1];
+        to_sort[temp_length - 1] = to_swap;
+        heap_restore_big(to_sort, temp_length - 1);
     }
 }
 
